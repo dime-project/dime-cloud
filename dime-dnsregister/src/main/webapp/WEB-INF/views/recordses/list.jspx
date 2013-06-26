@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_eu_dime_dnsregister_entities_Records" items="${recordses}" z="DNBMDgdqg3BZNyGJD8j2cVWQWb4=">
+        <table:table data="${recordses}" id="l_eu_dime_dnsregister_entities_Records" path="/recordses" z="ZStCxVrbP4Pb20pA7II/4tZbYQ4=">
+            <table:column id="c_eu_dime_dnsregister_entities_Records_domainId" property="domainId" z="rwXsqqWRIB3o1kgvez7xtt/Aa4c="/>
+            <table:column id="c_eu_dime_dnsregister_entities_Records_name" property="name" z="BYzHDYYYmi/GU74ywHHzBdNoKmQ="/>
+            <table:column id="c_eu_dime_dnsregister_entities_Records_type" property="type" z="7nNbXymx/sq3sD/VcoiClpVG8Q0="/>
+            <table:column id="c_eu_dime_dnsregister_entities_Records_content" property="content" z="1OsW5HT0/+6tr/7xqscMpYtFm8M="/>
+            <table:column id="c_eu_dime_dnsregister_entities_Records_ttl" property="ttl" z="SJuYV49GSv+cz6pgFg2RszQc2x4="/>
+            <table:column id="c_eu_dime_dnsregister_entities_Records_prio" property="prio" z="ZdvlgEjQWXVS4FkUcg+l3FsbFdg="/>
+        </table:table>
+    </page:list>
+</div>

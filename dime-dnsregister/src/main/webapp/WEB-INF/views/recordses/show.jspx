@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_eu_dime_dnsregister_entities_Records" object="${records}" path="/recordses" z="o6+JXmDdi0rt78e5mt/rphj11/M=">
+        <field:display field="domainId" id="s_eu_dime_dnsregister_entities_Records_domainId" object="${records}" z="xxRUEaOdOumx5UpDqIEOvGk8FhQ="/>
+        <field:display field="name" id="s_eu_dime_dnsregister_entities_Records_name" object="${records}" z="d3AylMeXGLe4zDtbm2AUOrseIXI="/>
+        <field:display field="type" id="s_eu_dime_dnsregister_entities_Records_type" object="${records}" z="yPcuFQth+GxrGQjX+6vZBFWsJ0M="/>
+        <field:display field="content" id="s_eu_dime_dnsregister_entities_Records_content" object="${records}" z="ZuFGVc6rNCdsAPLkMo8HHzMJo+4="/>
+        <field:display field="ttl" id="s_eu_dime_dnsregister_entities_Records_ttl" object="${records}" z="uWZUcTaltvqdRIbbRCisJdKYVTw="/>
+        <field:display field="prio" id="s_eu_dime_dnsregister_entities_Records_prio" object="${records}" z="k42VuA/YCOAkXpy0ratvNJ7HDRU="/>
+        <field:display field="changeDate" id="s_eu_dime_dnsregister_entities_Records_changeDate" object="${records}" z="8+vWlgQiGHEru4sz0+gf7N9pncM="/>
+        <field:display field="ordername" id="s_eu_dime_dnsregister_entities_Records_ordername" object="${records}" z="28TqTXtbLyXAYFISpDsRfXGsaRU="/>
+        <field:display field="auth" id="s_eu_dime_dnsregister_entities_Records_auth" object="${records}" z="3+JZxYZv7uQIQT7c9tzyVw27e9c="/>
+        <field:display field="publickey" id="s_eu_dime_dnsregister_entities_Records_publickey" object="${records}" z="L+HJsI5gMyWP46z/Yg7fp4uvJ+Q="/>
+    </page:show>
+</div>

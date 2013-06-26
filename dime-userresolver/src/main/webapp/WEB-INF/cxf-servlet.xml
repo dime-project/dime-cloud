@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+    xmlns="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxrs 
+		http://cxf.apache.org/schemas/jaxrs.xsd" >
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+
+    <bean id="jsonProvider" 
+    	class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+    
+    <bean id="memoryUserProvider" 
+        class="eu.dime.userresolver.service.user.MemoryUserProvider" />
+    
+    <bean id="ormLiteUserProvider" 
+        class="eu.dime.userresolver.service.user.OrmLiteUserProvider" />
+    
+    <bean id="oauthProvider" 
+	    class="eu.dime.userresolver.service.oauth.MemoryOAuthProvider"/>
+    
+    <bean id="userServiceBean" 
+        class="eu.dime.userresolver.service.user.UserService">
+    	<property name="userProvider" ref="ormLiteUserProvider" />
+    </bean>
+             
+	<bean id="authorizationService" 
+	    class="eu.dime.userresolver.service.oauth.ProofGrantService">
+  		<property name="dataProvider" ref="oauthProvider"/>
+	</bean>
+	
+	<bean id="accessTokenService" 
+	    class="org.apache.cxf.rs.security.oauth2.services.AccessTokenService">
+  		<property name="dataProvider" ref="oauthProvider"/>
+	</bean>
+	
+	<bean id="oauthFilter" 
+	    class="org.apache.cxf.rs.security.oauth2.filters.OAuthRequestFilter">
+  		<property name="dataProvider" ref="oauthProvider"/>
+	</bean>
+
+	<!-- ################################################################### -->
+
+	<jaxrs:server id="oauthService" address="/oauth">
+   		<jaxrs:serviceBeans>
+      		<ref bean="accessTokenService" />
+      		<ref bean="authorizationService" />
+  		</jaxrs:serviceBeans>
+  		<jaxrs:providers>
+            <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+	</jaxrs:server>
+    
+	<jaxrs:server id="noauthUserService" address="/noauth/users" >
+        <jaxrs:serviceBeans>
+            <ref bean="userServiceBean" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+	
+	<jaxrs:server id="userService" address="/users" >
+        <jaxrs:serviceBeans>
+            <ref bean="userServiceBean" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jsonProvider"/>
+            <ref bean="oauthFilter"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+    
+</beans>

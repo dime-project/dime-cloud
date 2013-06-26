@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_eu_dime_dnsregister_entities_Records" modelAttribute="records" path="/recordses" versionField="none" z="arOVVLfoJsJzkDLYX8eMoQp9RSw=">
+        <field:input field="domainId" id="c_eu_dime_dnsregister_entities_Records_domainId" validationMessageCode="field_invalid_integer" z="/Kg62NMe4pOemM18TL06tLV+0OE="/>
+        <field:input field="name" id="c_eu_dime_dnsregister_entities_Records_name" z="cmHabYHOURuWuPl+TzRAASdz32Q="/>
+        <field:input field="type" id="c_eu_dime_dnsregister_entities_Records_type" z="faXWeGaS1rXNePKTgezZ5zYId00="/>
+        <field:input field="content" id="c_eu_dime_dnsregister_entities_Records_content" z="aE8yUydsopaqU2Z/n5dF3pfd66k="/>
+        <field:input field="ttl" id="c_eu_dime_dnsregister_entities_Records_ttl" validationMessageCode="field_invalid_integer" z="PSIIzst9jCHhu6w3Bb18jfvZsOE="/>
+        <field:input field="prio" id="c_eu_dime_dnsregister_entities_Records_prio" validationMessageCode="field_invalid_integer" z="yDbMxNNcMkjZ9oIO7vGNIYmZJL8="/>
+        <field:input field="changeDate" id="c_eu_dime_dnsregister_entities_Records_changeDate" validationMessageCode="field_invalid_integer" z="u5LB9qfa2Ke0asmTkZPwuTjp4rI="/>
+        <field:input field="ordername" id="c_eu_dime_dnsregister_entities_Records_ordername" z="D9RxYensMaawcd5lRXzl4Zqv4XE="/>
+        <field:checkbox field="auth" id="c_eu_dime_dnsregister_entities_Records_auth" z="+f/amo+y5v7ydLrgXBOtQSZt1Qg="/>
+        <field:input field="publickey" id="c_eu_dime_dnsregister_entities_Records_publickey" z="V3h9ntsM8+ubC2EM9BMwRcxeEig="/>
+    </form:update>
+</div>
