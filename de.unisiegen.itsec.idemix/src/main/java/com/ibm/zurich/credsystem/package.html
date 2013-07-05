@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+
+<body bgcolor="white">
+
+<p>Package contains fundamential functionality to use the Idemix
+anonymous credential system.</p>
+
+<p>Also, the package contains a credential store implementation.
+This class manages credentials from different locations and makes them
+accessible. This functionality is (strictly speaking) not part of the
+Idemix library. It only shows how a credential store could be
+implemented and how credentials from the store can be retrieved to make
+them accessible to the library in order to compile a proof.</p>
+
+<p>One object used by the credential store it a translator object
+that manages the encoding of all elements to values that can be messages
+within an Idemix credential. This translator should be used when
+retrieving a credential as in the following transactions (e.g., running
+the proving protocol) the human-readable value can be presented to the
+user instead of the actually encoded value. In addition, when revealing
+a value to a verifier, the prover must provide the value whose encoding
+is revealed as otherwise the verifier does not get the information it
+was looking for.</p>
+
+<!-- Put @see and @since tags down here. -->
+
+@see com.ibm.zurich.credsystem.utils
+
+</body>
+</html>
