@@ -40,13 +40,14 @@ import eu.dime.userresolver.client.entities.RoundTwoResponseData;
 import eu.dime.userresolver.client.entities.RoundZeroRequestData;
 import eu.dime.userresolver.client.entities.RoundZeroResponseData;
 import eu.dime.userresolver.client.entities.StructureInformation;
+import eu.dime.userresolver.client.utils.HttpUtils;
 import eu.dime.userresolver.client.utils.IdemixUtils;
 
 public class IdemixClient {
 	private static final Logger LOG = 
 			LoggerFactory.getLogger(IdemixClient.class);
 	
-	private HttpClient httpClient = new DefaultHttpClient();
+	private HttpClient httpClient = HttpUtils.createHttpClient();
 	
 	private Gson gson = new Gson();
 	

@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
+import eu.dime.userresolver.client.utils.HttpUtils;
+
 public class ResolverClient {
 	
 	private class RoundZeroResponse {
@@ -58,7 +60,7 @@ public class ResolverClient {
 		
 		this.idemixClient = idemixClient;
 		
-		httpClient = new DefaultHttpClient();
+		httpClient = HttpUtils.createHttpClient();
 	}
 	
 	public String getToken(String scope, String masterSecret, 
