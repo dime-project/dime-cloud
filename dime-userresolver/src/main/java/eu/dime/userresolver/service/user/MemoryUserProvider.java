@@ -56,4 +56,17 @@ public class MemoryUserProvider implements UserProvider{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public User getBySaid(String said) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User update(String said, String name, String surname, String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

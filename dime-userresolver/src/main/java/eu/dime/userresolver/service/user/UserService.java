@@ -166,7 +166,32 @@ public class UserService {
 	}
 	
 	@POST
-	@Path("/remove/")
+	@Path("/update")
+	@Consumes("application/x-www-form-urlencoded")
+	@Produces ("application/json")
+	public Response update(
+			@FormParam("said") String said,
+			@FormParam("name") String name,
+			@FormParam("surname") String surname,
+			@FormParam("nickname") String nickname) {
+		
+		LOG.info("Update user request: {} , {} , {} , {}", 
+				new Object[]{said, name, surname, nickname});
+		
+		if(said.equals(""))
+			return Response.ok(
+					new ErrorResponse("Missing SAID")).status(400).build();
+		
+		User user =  userProvider.update(said, name, surname, nickname);
+		
+		RegisterResponse response = new RegisterResponse();
+		response.result = user;
+		
+		return Response.ok(response).build();		
+	}
+	
+	@POST
+	@Path("/remove")
 	@Produces ("application/json")
 	public Response remove(@QueryParam("said") String said) {
 		try {
@@ -184,6 +209,26 @@ public class UserService {
 					Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	
+	@DELETE
+	@Produces ("application/json")
+	public Response remove2(@QueryParam("said") String said) {
+		try {
+			RegisterResponse registerResponse = new RegisterResponse();
 			
+			User user = userProvider.remove(said);
+			registerResponse.result = user;
+			
+			return Response.ok(registerResponse).build();			
+		} catch (IllegalArgumentException e) {
+			return Response.ok(new ErrorResponse(e.getMessage())).status(
+					Response.Status.NOT_FOUND).build();
+		} catch (IllegalStateException e) {
+			return Response.ok(new ErrorResponse(e.getMessage())).status(
+					Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
 	
 }

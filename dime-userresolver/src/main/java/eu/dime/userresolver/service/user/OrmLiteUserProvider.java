@@ -175,4 +175,57 @@ public class OrmLiteUserProvider implements UserProvider{
 		}
 	}
 
+	@Override
+	public User getBySaid(String said) {
+		try {
+			LOG.info("Searching user with said -> {}", said);
+			
+			PreparedQuery<User> query = 
+					userDao.queryBuilder().where().eq(
+							"said", said).prepare();
+			List<User> users = userDao.query(query);
+			
+			
+			if(users.size() == 0) {
+				LOG.info("No user with said -> {} in database", said);
+				throw new IllegalArgumentException("Unknown said -> " + said);
+			}
+						
+			return users.get(0);
+		} catch (SQLException e) {
+			LOG.error("SQLException during user get", e);
+			throw new IllegalStateException(
+					"SQLException during user get - " + e.getMessage());
+		}
+	}
+	
+	@Override
+	public User update(String said, String name, String surname, String nickname) {
+		try {
+			LOG.info("Searching user with said -> {}", said);
+			
+			PreparedQuery<User> query = 
+					userDao.queryBuilder().where().eq(
+							"said", said).prepare();
+			List<User> users = userDao.query(query);
+			
+			
+			if(users.size() == 0) {
+				LOG.info("No user with said -> {} in database", said);
+				throw new IllegalArgumentException("Unknown said -> " + said);
+			}
+						
+			User user = users.get(0);
+			user.setName(name);
+			user.setSurname(surname);
+			user.setNickname(nickname);
+			userDao.update(user);
+			return user;
+		} catch (SQLException e) {
+			LOG.error("SQLException during user get", e);
+			throw new IllegalStateException(
+					"SQLException during user get - " + e.getMessage());
+		}
+	}
+
 }

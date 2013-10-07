@@ -9,5 +9,10 @@ public interface UserProvider {
 	public List<User> searchAll(String query);
 	public List<User> searchAllLike(String query);
 	
+	public User getBySaid(String said);
+	
+	public User update(String said, String name, String surname, String nickname);
+	
 	public User remove(String said);
+
 }
