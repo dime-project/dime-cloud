@@ -43,7 +43,7 @@ public class OrmLiteUserProvider implements UserProvider{
 			
 			appFolder = new File(FilenameUtils.concat(
 					FileUtils.getUserDirectoryPath(), 
-						properties.getProperty("app.folder")));
+					properties.getProperty("app.folder")));
 			
 			FileUtils.forceMkdir(appFolder);
 		} catch(IOException e) {
@@ -57,6 +57,14 @@ public class OrmLiteUserProvider implements UserProvider{
 							appFolder.getAbsolutePath(), "resolver.db"));
 			
 			userDao = DaoManager.createDao(connectionSource, User.class);
+			
+			// schema upgrade "hack"
+			try {
+				userDao.executeRaw("ALTER TABLE `users` ADD COLUMN key STRING;");
+			} catch (SQLException e){
+				LOG.info("Schema update failed. Already updated?");
+			}
+			
 			TableUtils.createTableIfNotExists(connectionSource, User.class);
 		} catch(SQLException e) {
 			LOG.error("Unable to create database", e);

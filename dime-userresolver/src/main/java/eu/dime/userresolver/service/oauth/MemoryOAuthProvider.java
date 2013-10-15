@@ -41,6 +41,20 @@ public class MemoryOAuthProvider implements AuthorizationCodeDataProvider {
 		permission.setHttpVerbs(Arrays.asList("POST", "GET"));
 		permission.setUris(Arrays.asList("/*"));
 		permissions.put(permission.getPermission(), permission);
+		
+		permission = 
+				new OAuthPermission(
+						"delete", "Allows registration of new users");
+		permission.setHttpVerbs(Arrays.asList("DELETE"));
+		permission.setUris(Arrays.asList("/*"));
+		permissions.put(permission.getPermission(), permission);
+		
+		permission = 
+				new OAuthPermission(
+						"update", "Allows registration of new users");
+		permission.setHttpVerbs(Arrays.asList("POST", "GET"));
+		permission.setUris(Arrays.asList("/*"));
+		permissions.put(permission.getPermission(), permission);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////

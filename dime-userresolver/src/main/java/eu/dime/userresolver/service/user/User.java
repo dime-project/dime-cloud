@@ -14,6 +14,10 @@ public class User {
 	@DatabaseField(generatedId = true)
 	private int id;
 	
+	@JsonIgnore
+	@DatabaseField
+	private String key;
+	
 	@DatabaseField
 	private String surname;
 	@DatabaseField
@@ -28,6 +32,14 @@ public class User {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getKey(){
+		return this.key;
+	}
+	
+	public void setKey(String key){
+		this.key = key;
 	}
 	
 	public String getSurname() {
@@ -60,7 +72,7 @@ public class User {
 	
 	public User() {}
 	
-	public User(String said, String name, String surname,	String nickname) {
+	public User(String said, String name, String surname, String nickname) {
 		this.surname = surname;
 		this.name = name;
 		this.nickname = nickname;

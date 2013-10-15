@@ -12,6 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +25,7 @@ import org.slf4j.LoggerFactory;
 public class UserService {
 	private static final Logger LOG = 
 			LoggerFactory.getLogger(UserService.class);
-	
+		
 	private class SearchResponse {
 		@SuppressWarnings("unused")
 		public String version = apiVersion;
@@ -34,6 +36,7 @@ public class UserService {
 		@SuppressWarnings("unused")
 		public String version = apiVersion;
 		public User result;
+		public String key;
 	}
 	
 	private class ErrorResponse {
@@ -100,6 +103,9 @@ public class UserService {
 		
 		User user = new User(said, name, surname, nickname);
 		
+		String key = RandomStringUtils.randomAlphanumeric(20);
+		user.setKey(DigestUtils.sha256Hex(key));
+	
 		try {
 			userProvider.register(user);
 		} catch(IllegalArgumentException e) {
@@ -109,9 +115,12 @@ public class UserService {
 		
 		RegisterResponse response = new RegisterResponse();
 		response.result = user;
+		response.key = key;
+
 		
 		return Response.ok(response).build();		
 	}
+	
 	
 	/**
 	 *  http://[url]/search?name=[name]&surname=[surname]&nickname=[nickname]
@@ -229,6 +238,5 @@ public class UserService {
 					Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
 	
 }
