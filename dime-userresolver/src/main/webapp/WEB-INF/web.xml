@@ -16,4 +16,5 @@
     <servlet-name>cxf-servlet</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
+ 	
 </web-app>

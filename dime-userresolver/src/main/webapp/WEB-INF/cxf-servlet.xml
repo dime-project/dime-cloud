@@ -41,7 +41,11 @@
 	    class="org.apache.cxf.rs.security.oauth2.filters.OAuthRequestFilter">
   		<property name="dataProvider" ref="oauthProvider"/>
 	</bean>
-
+	
+    <bean id="basicAuthInterceptor" class="eu.dime.userresolver.service.basicauth.BasicAuthenticationInterceptor">
+		<property name="userProvider" ref="ormLiteUserProvider" />
+    </bean>
+	 
 	<!-- ################################################################### -->
 
 	<jaxrs:server id="oauthService" address="/oauth">
@@ -69,8 +73,10 @@
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <ref bean="jsonProvider"/>
-            <ref bean="oauthFilter"/>
         </jaxrs:providers>
+        <jaxrs:inInterceptors>
+        	<ref bean="basicAuthInterceptor"/>
+        </jaxrs:inInterceptors>
     </jaxrs:server>
     
 </beans>

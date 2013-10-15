@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ws.rs.core.Response;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import eu.dime.userresolver.service.user.UserService;
 
 public class TestApp {
 	private static final Logger LOG = LoggerFactory.getLogger(TestApp.class);
@@ -62,7 +66,10 @@ public class TestApp {
 		//403 if scope == search
 //		resolverClient.register(token ,name, surname, nickname, said);
 		//resolverClient.search(token, name, surname, nickname);
-		resolverClient.searchAll(token, "ophi");
+		//resolverClient.searchAll(token, "ophi");
+		UserService userService = new UserService();
+		Response resp = userService.register(said, name, surname, nickname);
+		System.out.println(resp.getEntity().toString());
 		
 	}
 
