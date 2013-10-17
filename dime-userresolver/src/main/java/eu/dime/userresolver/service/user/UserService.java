@@ -110,7 +110,7 @@ public class UserService {
 			userProvider.register(user);
 		} catch(IllegalArgumentException e) {
 			return Response.ok(
-					new ErrorResponse("Duplicate SAID")).status(400).build();
+					new ErrorResponse(e.getMessage())).status(400).build();
 		}
 		
 		RegisterResponse response = new RegisterResponse();
