@@ -12,10 +12,10 @@
 	<name>di.me user-resolver</name>
 
 	<properties>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<cxf.version>2.7.0</cxf.version>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<jackson.version>1.9.10</jackson.version>
-		<idemix.version>2.3.4.1-SNAPSHOT</idemix.version>
 		<httpclient.version>4.2.1</httpclient.version>
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
@@ -37,12 +37,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
-		<!-- Idemix -->
-		<dependency>
-			<groupId>de.unisiegen.itsec</groupId>
-			<artifactId>idemix</artifactId>
-			<version>${idemix.version}</version>
 		</dependency>
 		<!-- CXF -->
 		<dependency>
@@ -113,6 +107,7 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<version>2.3.1</version>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>1.6</source>
