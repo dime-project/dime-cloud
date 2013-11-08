@@ -17,8 +17,8 @@ This repository consists of the packages:
 
 * dime-dnsregister
    
-   Contains the dns server adapted for dime-dns.
-
+   Adapter for dns server to allow di.me dns support.
+   Requires to install Power-DNS in addition. 
 
 
 ### Documentation
