@@ -14,8 +14,6 @@
 
 package eu.dime.userresolver.service.user;
 
-import javax.ws.rs.FormParam;
-
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.j256.ormlite.field.DatabaseField;
